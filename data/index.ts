@@ -1,4 +1,5 @@
 import {
+  BriefcaseBusiness,
   CalendarDays,
   Home,
   LogIn,
@@ -82,12 +83,125 @@ export const profileInfos = [
     image: "/medical_history.png",
   },
 ];
+export const assetsInfos = [
+  {
+    name: "Cow 1",
+    url: "/assets/details?type=mother-info",
+    image: "/cow_logo.png",
+    price: 12000,
+  },
+  {
+    name: "Cow 2",
+    url: "/assets/details?type=birth-companion",
+    image: "/cow_logo.png",
+    price: 15000,
+  },
+  {
+    name: "Cow 3",
+    url: "/assets/details?type=baby-info",
+    image: "/cow_logo.png",
+    price: 13500,
+  },
+  {
+    name: "Cow 4",
+    url: "/assets/details?type=medical-history",
+    image: "/cow_logo.png",
+    price: 42000,
+  },
+];
+
+export const acquisitionInfos = [
+  {
+    name: "Cow 1",
+    url: "/my-acquisitions/details?type=mother-info",
+    image: "/cow_logo.png",
+    price: 12000,
+  },
+  {
+    name: "Cow 2",
+    url: "/my-acquisitions/details?type=birth-companion",
+    image: "/cow_logo.png",
+    price: 15000,
+  },
+  {
+    name: "Cow 3",
+    url: "/my-acquisitions/details?type=baby-info",
+    image: "/cow_logo.png",
+    price: 13500,
+  },
+  {
+    name: "Cow 4",
+    url: "/my-acquisitions/details?type=medical-history",
+    image: "/cow_logo.png",
+    price: 42000,
+  },
+];
+
+const animalCost = {
+  Cow: [12000, 13000, 20000, 15000],
+  Goat: [7000, 9000, 6000, 4000],
+  Chicken: [200, 500, 300, 400],
+};
+
+export const assetVariantsInfos = (asset: keyof typeof animalCost) => [
+  {
+    name: `${asset} 1`,
+    url: "/assets/details?type=mother-info",
+    image: "/cow_logo.png",
+    price: animalCost[asset][0],
+  },
+  {
+    name: `${asset} 2`,
+    url: "/assets/details?type=birth-companion",
+    image: "/cow_logo.png",
+    price: animalCost[asset][1],
+  },
+  {
+    name: `${asset} 3`,
+    url: "/assets/details?type=baby-info",
+    image: "/cow_logo.png",
+    price: animalCost[asset][2],
+  },
+  {
+    name: `${asset} 4`,
+    url: "/assets/details?type=medical-history",
+    image: "/cow_logo.png",
+    price: animalCost[asset][3],
+  },
+];
+
+export const groupUsersInfos = [
+  {
+    name: "Pearl Osa",
+    status: "Paid",
+  },
+  {
+    name: "Onemhinye Bayode",
+    status: "Paid",
+  },
+  {
+    name: "Yanela Oluwaseeki",
+    status: "Paid",
+  },
+  {
+    name: "Mpumilelo Success",
+    status: "Pending",
+  },
+  {
+    name: "Nyaniso Mashabane",
+    status: "Pending",
+  },
+  {
+    name: "Mrs Kuda",
+    status: "Pending",
+  },
+];
 
 export const formTitles = {
   "mother-info": {
     name: "User Profile",
     image: "/pregnant_4.png",
-    skipUrl: "/register/details?type=birth-companion",
+    skipUrl: "/home",
   },
   "birth-companion": {
     name: "Birth Companion",
@@ -164,6 +278,21 @@ export const motherInputDetails = [
   { label: "Email Address", placeholder: "E.g john@doe.com", type: "email" },
 ];
 
+export const userProfileInputDetails = [
+  { label: "Full Name", placeholder: "E.g John" },
+  { label: "Surname", placeholder: "E.g Doe" },
+  { label: "Maiden Name", placeholder: "E.g Doe" },
+  { label: "ID / Passport", placeholder: "E.g 93023234000 / D2341SDFASDF" },
+  { label: "Date of Birth", type: "date" },
+  { label: "Country of Origin", placeholder: "E.g South Africa" },
+  {
+    label: "Contact Number",
+    placeholder: "E.g 0677123123123",
+    isPhoneNumber: true,
+  },
+  { label: "Email Address", placeholder: "E.g john@doe.com", type: "email" },
+];
+
 export const medicalHistoryInputDetails = [
   { label: "Details", placeholder: "Enter details of Family history" },
   { label: "Medication", placeholder: "Enter Medications" },
@@ -172,11 +301,11 @@ export const medicalHistoryInputDetails = [
 ];
 
 export const userNavList = [
-  { name: "Home", url: "/home", Icon: Home, bgColor: "pinklet" },
+  { name: "Dashboard", url: "/dashboard", Icon: Home, bgColor: "pinklet" },
   {
-    name: "Appointments",
-    url: "/appointments",
-    Icon: SquareArrowUp,
+    name: "Assets Groups",
+    url: "/asset-groups",
+    Icon: BriefcaseBusiness,
     bgColor: "turquoise",
   },
   {
