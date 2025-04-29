@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Blissful Birth",
-  description: "Experience Pregnancy Care Blissfully",
+  title: "Cattle & 1000 Hills",
+  description: "Cattle And A 1000 Hills",
 };
 
 export default function RootLayout({
