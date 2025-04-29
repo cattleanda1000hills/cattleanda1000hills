@@ -1,15 +1,16 @@
 "use client";
 
 import { logout } from "@/actions/auth";
-import { ArrowLeft, ChevronRight, LogInIcon, X } from "lucide-react";
+import { ArrowLeft, ChevronRight, FileUp, LogInIcon, X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
+import Link from "next/link";
 
 export const RegisterButton = () => {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.push("/register/details?type=mother-info")}
+      onClick={() => router.push("/register/user-profile")}
       className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
     >
       Sign Up
@@ -21,7 +22,7 @@ export const LoginButton = () => {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.push("/schedules/8")}
+      onClick={() => router.push("/dashboard")}
       className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
     >
       Sign In
@@ -186,5 +187,30 @@ export const LogOutButton = ({ item }: { item: Item }) => {
         <ChevronRight />
       </div>
     </div>
+  );
+};
+export const UploadPaymentDashboard = () => {
+  const [isUpload, setIsUpload] = useState(true);
+
+  return (
+    <>
+      {isUpload ? (
+        <div
+          onClick={() => setIsUpload(false)}
+          className={`flex items-center mx-auto justify-center gap-3 bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-full h-[35px]`}
+        >
+          <FileUp size={20} />
+          <p className="text-center">Upload Payment</p>
+        </div>
+      ) : (
+        <Link
+          className={`flex items-center mx-auto justify-center gap-3 bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-full h-[35px]`}
+          href="/dashboard"
+        >
+          <FileUp size={20} />
+          <p className="text-center">Back to Dashboard</p>
+        </Link>
+      )}
+    </>
   );
 };
