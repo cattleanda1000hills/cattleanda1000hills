@@ -75,7 +75,8 @@ const Header = ({ title, imgUrl }: { title: string; imgUrl?: string }) => {
         </div>{" "}
         <div style={{ zIndex }} className="absolute -top-1 -right-1">
           <div
-            className={`relative flex justify-end items-stretch flex-1 rounded-[20px] h-[${navHeight}px] w-[500px] max-w-full overflow-hidden`}
+            style={{ height: `${navHeight}px` }}
+            className={`relative flex justify-end items-stretch flex-1 rounded-[20px] w-[500px] max-w-full overflow-hidden`}
           >
             <motion.nav
               initial={false}

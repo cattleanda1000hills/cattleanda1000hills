@@ -308,11 +308,11 @@ export const userNavList = [
     Icon: BriefcaseBusiness,
     bgColor: "turquoise",
   },
-  {
-    name: "Profile",
-    url: "/profile",
-    Icon: SquareArrowUp,
-    bgColor: "pinklet",
-  },
+  // {
+  //   name: "Profile",
+  //   url: "/profile",
+  //   Icon: SquareArrowUp,
+  //   bgColor: "pinklet",
+  // },
   { name: "Sign Out", url: "#", Icon: LogIn, bgColor: "pinklet" },
 ];
