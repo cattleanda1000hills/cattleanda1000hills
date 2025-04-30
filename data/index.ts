@@ -4,49 +4,13 @@ import {
   Home,
   LogIn,
   ShieldPlus,
-  SquareArrowUp,
   TrendingUp,
 } from "lucide-react";
-
-export const steps = [1, 2, 3, 4];
-export const steps2 = [1, 2];
-export const services = [
-  { name: "Antenatal Care", img: "/services_1.png" },
-  { name: "Birthing Unit", img: "/services_2.png" },
-  { name: "Doula Service", img: "/services_1.png" },
-  { name: "PostNatal Home Visit ", img: "/services_2.png" },
-];
-
-export const testimonials = [
-  {
-    name: "John Doe",
-    comment: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer...`,
-  },
-  {
-    name: "Dolly Gwen",
-    comment: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer...`,
-  },
-  {
-    name: "Michelle King",
-    comment: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer...`,
-  },
-  {
-    name: "Blake Michael",
-    comment: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer...`,
-  },
-];
 
 export const features = [
   { name: "Track Pregnancy", Icon: TrendingUp },
   { name: "Manage Appointments", Icon: CalendarDays },
   { name: "Get Expert Tips", Icon: ShieldPlus },
-];
-export const schedulesNos = [
-  8, 13, 18, 21, 24, 28, 30, 32, 34, 36, 37, 38, 39, 40, 41, 42,
 ];
 
 export const timeSlots = [
@@ -83,6 +47,56 @@ export const profileInfos = [
     image: "/medical_history.png",
   },
 ];
+
+export const registerFormData = [
+  {
+    name: "username",
+    label: "Username",
+    placeholder: "E.g johnDoe, johndoe@gmail.com, 061 234 5678, etc...",
+    iconUrl: "/femaleUser.svg",
+    bgColour: "bg-turquoise-50",
+    isRequired: true,
+  },
+  {
+    label: "Password",
+    type: "password",
+    name: "password",
+    placeholder: "Password",
+    iconUrl: "/passwordKey.svg",
+    bgColour: "bg-turquoise-50",
+    isRequired: true,
+  },
+  {
+    label: "Confirm Password",
+    type: "password",
+    name: "confirmPassword",
+    placeholder: "Confirm Password",
+    iconUrl: "/passwordKey.svg",
+    bgColour: "bg-turquoise-50",
+    isRequired: true,
+  },
+];
+
+export const loginFormData = [
+  {
+    name: "username",
+    label: "Username",
+    placeholder: "E.g johnDoe, johndoe@gmail.com, 061 234 5678, etc...",
+    iconUrl: "/femaleUser.svg",
+    bgColour: "bg-turquoise-50",
+    isRequired: true,
+  },
+  {
+    label: "Password",
+    type: "password",
+    name: "password",
+    placeholder: "Password",
+    iconUrl: "/passwordKey.svg",
+    bgColour: "bg-turquoise-50",
+    isRequired: true,
+  },
+];
+
 export const assetsInfos = [
   {
     name: "Cow 1",
@@ -197,33 +211,6 @@ export const groupUsersInfos = [
   },
 ];
 
-export const formTitles = {
-  "mother-info": {
-    name: "User Profile",
-    image: "/pregnant_4.png",
-    skipUrl: "/home",
-  },
-  "birth-companion": {
-    name: "Birth Companion",
-    image: "/birth_companion.png",
-    skipUrl: "/register/details?type=baby-info",
-  },
-  "baby-info": {
-    name: "Baby's Info",
-    image: "/baby_2.png",
-    skipUrl: "/register/details?type=medical-history",
-  },
-  "medical-history": {
-    name: "Medical History",
-    image: "/medical_history.png",
-    skipUrl: "/first-appointment",
-  },
-  "payment-history": {
-    name: "Payment History",
-    image: "/payment_history.png",
-    skipUrl: "#",
-  },
-};
 
 export const paymentHistory = [
   {

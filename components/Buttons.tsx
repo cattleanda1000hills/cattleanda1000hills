@@ -1,19 +1,25 @@
 "use client";
-
 import { logout } from "@/actions/auth";
-import { ArrowLeft, ChevronRight, FileUp, LogInIcon, X } from "lucide-react";
+import { ArrowLeft, ChevronRight, LogInIcon, X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
 import Link from "next/link";
+import React from "react";
 
-export const RegisterButton = () => {
-  const router = useRouter();
+export const SubmitButton = ({
+  name,
+  isPending,
+}: {
+  name: string;
+  isPending?: boolean;
+}) => {
   return (
     <button
-      onClick={() => router.push("/register/user-profile")}
-      className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
+      type="submit"
+      className={`${
+        isPending ? "bg-gray-300" : "bg-turquoise-500 hover:bg-turquoise-700"
+      } text-white rounded-full w-[148px] h-[33px]`}
     >
-      Sign Up
+      {name}
     </button>
   );
 };
@@ -22,7 +28,7 @@ export const LoginButton = () => {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.push("/dashboard")}
+      onClick={() => router.push("/schedules/8")}
       className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
     >
       Sign In
@@ -189,28 +195,57 @@ export const LogOutButton = ({ item }: { item: Item }) => {
     </div>
   );
 };
-export const UploadPaymentDashboard = () => {
-  const [isUpload, setIsUpload] = useState(true);
 
-  return (
-    <>
-      {isUpload ? (
-        <div
-          onClick={() => setIsUpload(false)}
-          className={`flex items-center mx-auto justify-center gap-3 bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-full h-[35px]`}
-        >
-          <FileUp size={20} />
-          <p className="text-center">Upload Payment</p>
-        </div>
-      ) : (
-        <Link
-          className={`flex items-center mx-auto justify-center gap-3 bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-full h-[35px]`}
-          href="/dashboard"
-        >
-          <FileUp size={20} />
-          <p className="text-center">Back to Dashboard</p>
-        </Link>
-      )}
-    </>
+export const DateSlotButton = ({
+  date,
+  time,
+  setSelectedSlot,
+  setError,
+}: {
+  date: string;
+  time: string;
+  setSelectedSlot: (date: string) => void;
+  setError: (error: string) => void;
+}) => (
+  <button
+    onClick={() => {
+      setSelectedSlot(date);
+      setError("");
+    }}
+    className={`bg-pinklet-50 md:focus:bg-pinklet-500 md:focus:text-white hover:bg-pinklet-500 hover:text-white text-turquoise-900 rounded-full px-5 h-[35px]`}
+  >
+    <span className="md:text-sm">
+      {date} {time}
+    </span>
+  </button>
+);
+
+export const NextAppointmentButton = ({
+  id,
+  from,
+  nextPregnancyWeeks,
+  isCofirmed,
+}: {
+  id: string;
+  from?: string;
+  nextPregnancyWeeks: number;
+  isCofirmed: boolean;
+}) => {
+  return isCofirmed ? (
+    <Link
+      className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[140px] h-[30px]"
+      href={`/confirmed-booking?bookingId=${id}${from ? `&from=${from}` : ""}`}
+    >
+      <p className="text-center w-full text-sm">View Details</p>
+    </Link>
+  ) : (
+    <Link
+      className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[180px] h-[30px]"
+      href={`/confirm-appointment?appointmentWeek=${nextPregnancyWeeks}${
+        from ? `&from=${from}` : ""
+      }`}
+    >
+      <p className="text-center w-full text-sm">Book Appointment</p>
+    </Link>
   );
 };
