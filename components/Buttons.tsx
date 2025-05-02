@@ -1,9 +1,9 @@
 "use client";
 import { logout } from "@/actions/auth";
-import { ArrowLeft, ChevronRight, LogInIcon, X } from "lucide-react";
+import { ArrowLeft, ChevronRight, FileUp, LogInIcon, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 export const SubmitButton = ({
   name,
@@ -247,5 +247,31 @@ export const NextAppointmentButton = ({
     >
       <p className="text-center w-full text-sm">Book Appointment</p>
     </Link>
+  );
+};
+
+export const UploadPaymentDashboard = () => {
+  const [isUpload, setIsUpload] = useState(true);
+
+  return (
+    <>
+      {isUpload ? (
+        <div
+          onClick={() => setIsUpload(false)}
+          className={`flex items-center mx-auto justify-center gap-3 bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-full h-[35px]`}
+        >
+          <FileUp size={20} />
+          <p className="text-center">Upload Payment</p>
+        </div>
+      ) : (
+        <Link
+          className={`flex items-center mx-auto justify-center gap-3 bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-full h-[35px]`}
+          href="/dashboard"
+        >
+          <FileUp size={20} />
+          <p className="text-center">Back to Dashboard</p>
+        </Link>
+      )}
+    </>
   );
 };
