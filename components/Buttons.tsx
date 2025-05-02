@@ -1,5 +1,4 @@
 "use client";
-
 import { logout } from "@/actions/auth";
 import { ArrowLeft, ChevronRight, FileUp, LogInIcon, X } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -212,5 +211,41 @@ export const UploadPaymentDashboard = () => {
         </Link>
       )}
     </>
+  );
+};
+
+export const TermsAndConditions = ({ asset }: { asset: string }) => {
+  const [isCheckBox, setIsCheckBox] = useState(false);
+  const router = useRouter();
+
+  return (
+    <div className="w-full px-7 ">
+      <div className="flex gap-3 mb-3 items-center underline">
+        <input
+          onClick={() => setIsCheckBox(!isCheckBox)}
+          type="checkbox"
+          className="rounded-md border border-turquiose-200"
+        />
+        <Link href={`/asset-groups/terms-and-conditions?asset=${asset}`}>
+          Agree to Terms & Conditions
+        </Link>
+      </div>
+
+      {isCheckBox ? (
+        <button
+          className={`flex items-center mx-auto justify-center gap-3 bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-full h-[35px]`}
+          onClick={() => router.push(`/assets?asset=${asset}`)}
+        >
+          <p className="text-center">Add Asset</p>
+        </button>
+      ) : (
+        <button
+          className="flex items-center mx-auto justify-center gap-3 bg-gray-400 hover:bg-gray-600 text-white rounded-full w-full h-[35px]"
+          onClick={() => router.push("#")}
+        >
+          <p className="text-center">Add Asset</p>
+        </button>
+      )}
+    </div>
   );
 };
