@@ -16,5 +16,28 @@ export const getAssetGroups = cache(async () => {
 
 export const getAssetGroup = cache(async (id: string) => {
   await dbConnect();
-  return await AssetGroup.findById(id);
+  const response = await AssetGroup.findById(id);
+  if (!response) return null;
+
+  const {
+    _id,
+    name,
+    monthlyPayment,
+    monthPaymentDescription,
+    onceOffPayment,
+    onceOffPaymentDescription,
+    cycleMonths,
+    dueDate,
+  } = response;
+
+  return {
+    id: _id?.toString(),
+    name,
+    monthlyPayment,
+    monthPaymentDescription,
+    onceOffPayment,
+    onceOffPaymentDescription,
+    cycleMonths,
+    dueDate,
+  };
 });

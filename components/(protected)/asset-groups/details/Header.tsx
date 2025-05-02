@@ -13,7 +13,7 @@ const Header = ({ asset }: { asset: string }) => {
             </div>
           </BackButtonWrapper>
           <span className="font-mono font-semibold text-turquoise-900 text-xl tracking-tight">
-            {asset} Asset Group
+            {asset} Group
           </span>{" "}
         </div>
       </div>
