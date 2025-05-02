@@ -4,6 +4,7 @@ import { ArrowLeft, ChevronRight, FileUp, LogInIcon, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import React, { useState } from "react";
+import { addAssetGroup } from "@/actions/asset-group";
 
 export const SubmitButton = ({
   name,
@@ -276,9 +277,10 @@ export const UploadPaymentDashboard = () => {
   );
 };
 
-export const TermsAndConditions = ({ asset }: { asset: string }) => {
+export const TermsAndConditions = ({ assetGroupId }: { assetGroupId: string }) => {
   const [isCheckBox, setIsCheckBox] = useState(false);
   const router = useRouter();
+  const addAsset = async () => await addAssetGroup(assetGroupId);
 
   return (
     <div className="w-full px-7">
@@ -288,7 +290,7 @@ export const TermsAndConditions = ({ asset }: { asset: string }) => {
           type="checkbox"
           className="rounded-md border border-turquiose-200"
         />
-        <Link href={`/asset-groups/terms-and-conditions?asset=${asset}`}>
+        <Link href={`/asset-groups/terms-and-conditions?asset=${assetGroupId}`}>
           Agree to Terms & Conditions
         </Link>
       </div>
@@ -296,7 +298,7 @@ export const TermsAndConditions = ({ asset }: { asset: string }) => {
       {isCheckBox ? (
         <button
           className={`flex items-center mx-auto justify-center gap-3 bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-full h-[35px]`}
-          onClick={() => router.push(`/assets?asset=${asset}`)}
+          onClick={addAsset}
         >
           <p className="text-center">Add Asset</p>
         </button>
