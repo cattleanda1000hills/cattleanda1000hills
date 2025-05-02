@@ -303,3 +303,31 @@ export const userNavList = [
   // },
   { name: "Sign Out", url: "#", Icon: LogIn, bgColor: "pinklet" },
 ];
+
+export const formTitles = {
+  "mother-info": {
+    name: "User Profile",
+    image: "/pregnant_4.png",
+    skipUrl: "/home",
+  },
+  "birth-companion": {
+    name: "Birth Companion",
+    image: "/birth_companion.png",
+    skipUrl: "/register/details?type=baby-info",
+  },
+  "baby-info": {
+    name: "Baby's Info",
+    image: "/baby_2.png",
+    skipUrl: "/register/details?type=medical-history",
+  },
+  "medical-history": {
+    name: "Medical History",
+    image: "/medical_history.png",
+    skipUrl: "/first-appointment",
+  },
+  "payment-history": {
+    name: "Payment History",
+    image: "/payment_history.png",
+    skipUrl: "#",
+  },
+};
