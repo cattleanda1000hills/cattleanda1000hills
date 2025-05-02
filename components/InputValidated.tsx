@@ -36,7 +36,7 @@ const Input = ({
         <label className="font-mono text-turquoise-900" htmlFor="">
           {label}
         </label>
-        {isRequired && <p className="font-mono text-pinklet-500">*</p>}
+        {isRequired && <p className="font-mono text-red-500">*</p>}
       </div>
 
       <div
