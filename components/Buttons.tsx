@@ -219,7 +219,7 @@ export const TermsAndConditions = ({ asset }: { asset: string }) => {
   const router = useRouter();
 
   return (
-    <div className="w-full px-7 ">
+    <div className="w-full px-7">
       <div className="flex gap-3 mb-3 items-center underline">
         <input
           onClick={() => setIsCheckBox(!isCheckBox)}
