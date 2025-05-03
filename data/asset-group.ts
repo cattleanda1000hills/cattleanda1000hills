@@ -3,9 +3,10 @@ import dbConnect from "@/lib/db";
 import AssetGroup from "@/models/asset-group";
 import UserAssetGroup from "@/models/user-asset-group";
 import { Types } from "mongoose";
+import { revalidatePath } from "next/cache";
 import { cache } from "react";
 
-export const getAvailableAssetGroups = cache(async () => {
+export const getAvailableAssetGroups = async () => {
   const session = await verifySession();
   if (!session) return null;
 
@@ -36,7 +37,7 @@ export const getAvailableAssetGroups = cache(async () => {
     cycleMonths,
     monthlyPayment,
   }));
-});
+};
 
 export const getAssetGroupMembers = async (assetGroupId: string) => {
   const session = await verifySession();
