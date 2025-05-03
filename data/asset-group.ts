@@ -6,8 +6,29 @@ import { Types } from "mongoose";
 import { cache } from "react";
 
 export const getAssetGroups = cache(async () => {
+  const session = await verifySession();
+  if (!session) return null;
+
+  const userId = session?.userId as string;
   await dbConnect();
-  const assetGroups = await AssetGroup.find({ dueDate: { $gt: new Date() } });
+
+  // Groups user belongs to.
+  const userAssetGroups = await UserAssetGroup.find(
+    {
+      userId: new Types.ObjectId(userId),
+    },
+    "assetGroupId"
+  );
+
+  const assetGroupIds = userAssetGroups.map(
+    (assetGroup) => assetGroup.assetGroupId
+  );
+
+  // Checks groups user does not belong to and check if group still open
+  const assetGroups = await AssetGroup.find({
+    _id: { $nin: assetGroupIds },
+    dueDate: { $gt: new Date() },
+  });
 
   return assetGroups.map(({ _id, name, cycleMonths, monthlyPayment }: any) => ({
     id: _id,
