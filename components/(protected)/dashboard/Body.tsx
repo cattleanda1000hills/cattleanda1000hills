@@ -10,9 +10,13 @@ const Body = async () => {
 
   return (
     <div className="px-[20px] pb-[40px] flex flex-col gap-[20px] overflow-x-hidden">
-      {userAssetGroups.map((a) => (
-        <AssetCards {...a} key={a.id} />
-      ))}
+      {userAssetGroups && userAssetGroups.length > 0 ? (
+        userAssetGroups.map((a) => <AssetCards {...a} key={a.id} />)
+      ) : (
+        <div className="text-turquoise-600">
+          No New available Asset Group...
+        </div>
+      )}
       <div className="w-full px-7 ">
         <Link
           className={`flex items-center mx-auto justify-center gap-3 bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-full h-[35px]`}
