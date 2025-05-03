@@ -1,8 +1,8 @@
 import { BackButtonWrapper } from "@/components/Buttons";
 import { ArrowLeft, Users } from "lucide-react";
 
-const Header = ({ asset }: { asset: string }) => {
-  const url = `/next-contribution?asset=${asset}`;
+const Header = () => {
+  const url = `/dashboard`;
 
   return (
     <div style={{ zIndex: 999 }} className="pb-[20px] sticky top-0">
@@ -19,7 +19,7 @@ const Header = ({ asset }: { asset: string }) => {
             </div>
           </BackButtonWrapper>
           <span className="font-mono font-semibold text-turquoise-900 text-xl">
-            June Contributions
+            Group Contributions
           </span>
         </div>
       </div>
