@@ -1,4 +1,5 @@
 import { BackArrowUrlButton, BackButtonWrapper } from "@/components/Buttons";
+import { User } from "lucide-react";
 import Image from "next/image";
 
 const Header = () => {
@@ -10,13 +11,7 @@ const Header = () => {
             <BackButtonWrapper>
               <div className="flex items-center px-2">
                 <BackArrowUrlButton url={""} />
-                <Image
-                  className=""
-                  src="/pregnant_4.png"
-                  height={26}
-                  width={24}
-                  alt="/pregnant_4.png"
-                />
+                <User />
               </div>
             </BackButtonWrapper>
             <span className="font-mono font-semibold text-turquoise-900 text-xl">
