@@ -1,5 +1,5 @@
 "use server";
-import { monthNames } from "@/data";
+import { monthNames, PENDING_PAYMENT } from "@/data";
 import { verifySession } from "@/lib/dal";
 import dbConnect from "@/lib/db";
 import AssetGroup from "@/models/asset-group";
@@ -43,6 +43,7 @@ export const addAssetGroup = async (assetGroupId: string) => {
       assetGroupId: groupObjectId,
       userId: userObjectId,
       monthSlot: monthNames[nextAvailableSlot],
+      status: PENDING_PAYMENT,
     });
   } catch (err) {
     console.log("Error: ", err);
