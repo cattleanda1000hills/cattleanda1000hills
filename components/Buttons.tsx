@@ -284,13 +284,16 @@ export const TermsAndConditions = ({
 }) => {
   const [isCheckBox, setIsCheckBox] = useState(false);
   const router = useRouter();
-  const addAsset = async () => await addAssetGroup(assetGroupId);
+  const addAsset = async () => {
+    setIsCheckBox(false);
+    await addAssetGroup(assetGroupId);
+  };
 
   return (
     <div className="w-full px-7">
       <div className="flex gap-3 mb-3 items-center underline">
         <input
-          onClick={() => setIsCheckBox(!isCheckBox)}
+          onClick={() => setIsCheckBox(true)}
           type="checkbox"
           className="rounded-md border border-turquiose-200"
         />
