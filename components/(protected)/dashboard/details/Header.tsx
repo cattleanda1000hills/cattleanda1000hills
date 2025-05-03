@@ -1,7 +1,7 @@
 import { BackArrowUrlButton, BackButtonWrapper } from "@/components/Buttons";
 import { BriefcaseBusiness } from "lucide-react";
 
-const Header = ({ asset }: { asset: string }) => {
+const Header = ({ name }: { name: string }) => {
   const url = `/dashboard`;
 
   return (
@@ -10,12 +10,12 @@ const Header = ({ asset }: { asset: string }) => {
         <div className="flex items-center gap-3">
           <BackButtonWrapper url={url}>
             <div className="flex items-center px-2">
-              <BackArrowUrlButton url="/asset-groups" />
+              <BackArrowUrlButton url="/name-groups" />
               <BriefcaseBusiness />
             </div>
           </BackButtonWrapper>
           <span className="font-mono font-semibold text-turquoise-900 text-xl tracking-tight">
-            {asset} Asset Group
+            {name} Group
           </span>
         </div>
       </div>
