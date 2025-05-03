@@ -22,7 +22,7 @@ const Register = () => {
               </h3>
             </div>
           </div>
-          <div className="rounded-t-[50px] h-[460px] bg-white py-16 px-7 flex flex-col justify-center">
+          <div className="rounded-t-[50px]  md:h-[430px] h-[460px] bg-white py-16 px-7 flex flex-col justify-center">
             <h3 className="font-mono leading-none mb-2 text-xl text-turquoise-900 font-medium">
               Sign Up
             </h3>
