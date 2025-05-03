@@ -1,19 +1,19 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { DollarSign } from "lucide-react";
+import { getNextContributionMonth } from "@/data/asset-group";
 
-const AssetCards = ({
+const AssetCards = async ({
   id,
   name,
-  cycleMonths,
   monthlyPayment,
 }: {
   id: string;
   name: string;
-  cycleMonths: number;
   monthlyPayment: number;
-}) => {
+  }) => {
+  
+  const nextContributionMonth = (await getNextContributionMonth(id)) || "";
   return (
     <div className="flex flex-col gap-y-4">
       <div className="shadow-xl relative w-full bg-turquoise-100 rounded-3xl px-4 py-4 md:py-4 overflow-hidden">
@@ -35,7 +35,7 @@ const AssetCards = ({
                   Next Contribution:
                 </p>
                 <p className="font-sans text-turquoise-900 text-base font-bold">
-                  May
+                  {nextContributionMonth}
                 </p>
               </div>
             </div>

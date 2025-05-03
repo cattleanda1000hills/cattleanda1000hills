@@ -4,6 +4,7 @@ import AssetGroup from "@/models/asset-group";
 import UserAssetGroup from "@/models/user-asset-group";
 import { Types } from "mongoose";
 import { cache } from "react";
+import { PENDING_PAYMENT } from ".";
 
 export const getAvailableAssetGroups = async () => {
   const session = await verifySession();
@@ -106,6 +107,20 @@ export const getAssetGroupsForUserById = async (assetGroupId: string) => {
       cycleMonths: assetGroup.cycleMonths,
     },
   };
+};
+
+export const getNextContributionMonth = async (assetGroupId: string) => {
+  const session = await verifySession();
+  if (!session) return null;
+
+  await dbConnect();
+  const assetGroups = await UserAssetGroup.find({
+    assetGroupId: new Types.ObjectId(assetGroupId),
+    status: PENDING_PAYMENT,
+  }).sort({ createdAt: 1 });
+
+  if (!assetGroups) return "";
+  return assetGroups[0].monthSlot;
 };
 
 export const getAssetGroup = cache(async (id: string) => {
