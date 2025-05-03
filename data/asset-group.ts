@@ -3,7 +3,6 @@ import dbConnect from "@/lib/db";
 import AssetGroup from "@/models/asset-group";
 import UserAssetGroup from "@/models/user-asset-group";
 import { Types } from "mongoose";
-import { revalidatePath } from "next/cache";
 import { cache } from "react";
 
 export const getAvailableAssetGroups = async () => {
