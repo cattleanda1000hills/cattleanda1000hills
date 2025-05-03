@@ -81,7 +81,7 @@ export const getAssetGroupsForUser = async () => {
   }); // Returns an array of group objects
 };
 
-export const getAssetGroupsForUserById = cache(async (assetGroupId: string) => {
+export const getAssetGroupsForUserById = async (assetGroupId: string) => {
   const session = await verifySession();
   if (!session) return null;
 
@@ -107,7 +107,7 @@ export const getAssetGroupsForUserById = cache(async (assetGroupId: string) => {
       cycleMonths: assetGroup.cycleMonths,
     },
   };
-});
+};
 
 export const getAssetGroup = cache(async (id: string) => {
   await dbConnect();
