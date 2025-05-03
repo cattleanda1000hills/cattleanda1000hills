@@ -3,7 +3,7 @@ import mongoose, { Schema, Document, Model, Types } from "mongoose";
 export interface UserAssetGroup extends Document {
   userId: Types.ObjectId;
   assetGroupId: Types.ObjectId;
-  status: boolean;
+  status: Boolean;
   monthSlot: string;
   createdAt?: Date;
   updatedAt?: Date;
