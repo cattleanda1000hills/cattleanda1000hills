@@ -3,6 +3,7 @@ import mongoose, { Schema, Document, Model, Types } from "mongoose";
 export interface UserAssetGroup extends Document {
   userId: Types.ObjectId;
   assetGroupId: Types.ObjectId;
+  status: boolean;
   monthSlot: string;
   createdAt?: Date;
   updatedAt?: Date;
@@ -16,6 +17,7 @@ const UserAssetGroupSchema = new Schema<UserAssetGroup>(
       required: true,
     },
     userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    status: { type: Boolean, required: true },
     monthSlot: { type: String, required: true },
   },
   { timestamps: true }
