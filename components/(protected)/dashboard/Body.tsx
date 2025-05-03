@@ -14,7 +14,7 @@ const Body = async () => {
         userAssetGroups.map((a) => <AssetCards {...a} key={a.id} />)
       ) : (
         <div className="text-turquoise-600">
-          No New available Asset Group...
+          No new Asset Group Available!!!
         </div>
       )}
       <div className="w-full px-7 ">

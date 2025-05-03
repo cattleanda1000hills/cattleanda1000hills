@@ -13,7 +13,7 @@ const Body = async () => {
         ))
       ) : (
         <div className="text-turquoise-600">
-          No New available Asset Group...{" "}
+          No new Asset Group Available!!!
         </div>
       )}
     </div>
