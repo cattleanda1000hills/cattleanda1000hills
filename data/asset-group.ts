@@ -1,5 +1,8 @@
+import { verifySession } from "@/lib/dal";
 import dbConnect from "@/lib/db";
 import AssetGroup from "@/models/asset-group";
+import UserAssetGroup from "@/models/user-asset-group";
+import { Types } from "mongoose";
 import { cache } from "react";
 
 export const getAssetGroups = cache(async () => {
@@ -12,6 +15,28 @@ export const getAssetGroups = cache(async () => {
     cycleMonths,
     monthlyPayment,
   }));
+});
+
+export const getAssetGroupsForUser = cache(async () => {
+  const session = await verifySession();
+  if (!session) return null;
+
+  const userId = session?.userId as string;
+  await dbConnect();
+
+  const userGroups = await UserAssetGroup.find({
+    userId: new Types.ObjectId(userId),
+  }).populate("assetGroupId", "_id name monthlyPayment cycleMonths");
+
+  return userGroups.map((ug) => {
+    const group = ug.assetGroupId as any;
+    return {
+      id: group._id.toString(),
+      name: group.name,
+      monthlyPayment: group.monthlyPayment,
+      cycleMonths: group.cycleMonths,
+    };
+  }); // Returns an array of group objects
 });
 
 export const getAssetGroup = cache(async (id: string) => {

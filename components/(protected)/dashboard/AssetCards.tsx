@@ -4,20 +4,22 @@ import Link from "next/link";
 import { DollarSign } from "lucide-react";
 
 const AssetCards = ({
-  asset,
-  cycleLength,
-  groupMonthlyContribution,
+  id,
+  name,
+  cycleMonths,
+  monthlyPayment,
 }: {
-  asset: string;
-  cycleLength: number;
-  groupMonthlyContribution: number;
+  id: string;
+  name: string;
+  cycleMonths: number;
+  monthlyPayment: number;
 }) => {
   return (
     <div className="flex flex-col gap-y-4">
       <div className="shadow-xl relative w-full bg-turquoise-100 rounded-3xl px-4 py-4 md:py-4 overflow-hidden">
         <div className="flex flex-col h-full gap-2">
           <h2 className="font-sans text-medium font-bold text-lg text-turquoise-900 tracking-wide">
-            {asset} Asset Group
+            {name} Asset Group
           </h2>
           <div className="flex flex-col gap-1">
             <div className="flex gap-3 items-center">
@@ -33,10 +35,10 @@ const AssetCards = ({
               </div>
               <div className="flex justify-between w-4/5">
                 <p className="font-sans text-turquoise-900 text-base">
-                  Next Contribution:
+                  Cycle Months:
                 </p>
                 <p className="font-sans text-turquoise-900 text-base font-bold">
-                  {cycleLength} Months
+                  {cycleMonths} Months
                 </p>
               </div>
             </div>
@@ -53,7 +55,7 @@ const AssetCards = ({
                   Monthly Contribution:
                 </p>
                 <p className="font-sans text-turquoise-900 text-base font-bold">
-                  R {groupMonthlyContribution}
+                  R {monthlyPayment}
                 </p>
               </div>
             </div>
@@ -61,7 +63,7 @@ const AssetCards = ({
           <div className="w-full">
             <Link
               className="flex items-center mx-auto bg-turquoise-500 hover:bg-turqoise-700 text-white rounded-2xl w-[140px] h-[30px]"
-              href={`/dashboard/details?asset=${asset}`}
+              href={`/dashboard/details?assetId=${id}`}
             >
               <p className="text-center w-full text-base">View Group</p>
             </Link>

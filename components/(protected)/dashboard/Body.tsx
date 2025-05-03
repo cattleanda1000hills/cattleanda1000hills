@@ -1,16 +1,17 @@
 import Link from "next/link";
 import AssetCards from "./AssetCards";
 import { BriefcaseBusiness, Plus } from "lucide-react";
+import { getAssetGroupsForUser } from "@/data/asset-group";
 
-const Body = () => {
-  const assetGroupData = [
-    { asset: "Cow", cycleLength: 12, groupMonthlyContribution: 1200 },
-  ];
+const Body = async () => {
+  const userAssetGroups = await getAssetGroupsForUser();
+
+  if (!userAssetGroups) return null;
 
   return (
     <div className="px-[20px] pb-[40px] flex flex-col gap-[20px] overflow-x-hidden">
-      {assetGroupData.map((a) => (
-        <AssetCards {...a} key={a.asset} />
+      {userAssetGroups.map((a) => (
+        <AssetCards {...a} key={a.id} />
       ))}
       <div className="w-full px-7 ">
         <Link
