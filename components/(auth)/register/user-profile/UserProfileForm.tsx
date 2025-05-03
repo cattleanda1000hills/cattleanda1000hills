@@ -66,7 +66,7 @@ const UserProfileForm = () => {
       </div>
       <div className="flex gap-3">
         <BackButton />
-        <SubmitButton name="Submit" />
+        <SubmitButton name="Submit" isPending={isPending} />
       </div>
     </form>
   );
