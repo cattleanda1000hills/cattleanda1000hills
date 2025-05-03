@@ -18,9 +18,6 @@ const AssetCards = ({
     <div className="flex flex-col gap-y-4">
       <div className="shadow-xl relative w-full bg-turquoise-100 rounded-3xl px-4 py-4 md:py-4 overflow-hidden">
         <div className="flex flex-col h-full gap-2">
-          <h2 className="font-mono text-medium font-bold text-lg text-turquoise-900 tracking-tight">
-            Next Contribution
-          </h2>
           <div className="flex flex-col gap-1">
             <div className="flex gap-3 items-center">
               <div
@@ -35,10 +32,10 @@ const AssetCards = ({
               </div>
               <div className="flex justify-between w-4/5">
                 <p className="font-sans text-turquoise-900 text-base">
-                  Cycle Months:
+                  Next Contribution:
                 </p>
                 <p className="font-sans text-turquoise-900 text-base font-bold">
-                  {cycleMonths} Months
+                  May
                 </p>
               </div>
             </div>
