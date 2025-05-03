@@ -29,7 +29,7 @@ export const LoginButton = () => {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.push("/schedules/8")}
+      onClick={() => router.push("#")}
       className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
     >
       Sign In
@@ -277,7 +277,11 @@ export const UploadPaymentDashboard = () => {
   );
 };
 
-export const TermsAndConditions = ({ assetGroupId }: { assetGroupId: string }) => {
+export const TermsAndConditions = ({
+  assetGroupId,
+}: {
+  assetGroupId: string;
+}) => {
   const [isCheckBox, setIsCheckBox] = useState(false);
   const router = useRouter();
   const addAsset = async () => await addAssetGroup(assetGroupId);
