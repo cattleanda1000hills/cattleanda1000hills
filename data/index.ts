@@ -21,6 +21,8 @@ export const monthNames = [
   "November",
   "December",
 ];
+export const PENDING_PAYMENT = "pending";
+export const COMPLETE_PAYMENT = "complete";
 
 export const features = [
   { name: "Track Pregnancy", Icon: TrendingUp },
@@ -225,7 +227,6 @@ export const groupUsersInfos = [
     status: "Pending",
   },
 ];
-
 
 export const paymentHistory = [
   {
