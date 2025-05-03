@@ -5,7 +5,7 @@ import UserAssetGroup from "@/models/user-asset-group";
 import { Types } from "mongoose";
 import { cache } from "react";
 
-export const getAssetGroups = cache(async () => {
+export const getAvailableAssetGroups = cache(async () => {
   const session = await verifySession();
   if (!session) return null;
 
@@ -38,7 +38,27 @@ export const getAssetGroups = cache(async () => {
   }));
 });
 
-export const getAssetGroupsForUser = cache(async () => {
+export const getAssetGroupMembers = async (assetGroupId: string) => {
+  const session = await verifySession();
+  if (!session) return null;
+
+  await dbConnect();
+  return await UserAssetGroup.find({
+    assetGroupId: new Types.ObjectId(assetGroupId),
+  }).populate("userId");
+};
+
+export const getNumberOfAssetGroupMember = async (assetGroupId: string) => {
+  const session = await verifySession();
+  if (!session) return null;
+
+  await dbConnect();
+  return await UserAssetGroup.countDocuments({
+    assetGroupId: new Types.ObjectId(assetGroupId),
+  });
+};
+
+export const getAssetGroupsForUser = async () => {
   const session = await verifySession();
   if (!session) return null;
 
@@ -58,6 +78,34 @@ export const getAssetGroupsForUser = cache(async () => {
       cycleMonths: group.cycleMonths,
     };
   }); // Returns an array of group objects
+};
+
+export const getAssetGroupsForUserById = cache(async (assetGroupId: string) => {
+  const session = await verifySession();
+  if (!session) return null;
+
+  const userId = session?.userId as string;
+  await dbConnect();
+
+  const response = await UserAssetGroup.findOne({
+    userId: new Types.ObjectId(userId),
+    assetGroupId: new Types.ObjectId(assetGroupId),
+  }).populate("assetGroupId", "_id name monthlyPayment cycleMonths");
+
+  if (!response) return null;
+  const userAssetGroup = response as any;
+  const assetGroup = userAssetGroup.assetGroupId as any;
+
+  return {
+    id: assetGroup._id.toString(),
+    monthSlot: response.monthSlot,
+    assetGroup: {
+      id: assetGroup._id.toString(),
+      name: assetGroup.name,
+      monthlyPayment: assetGroup.monthlyPayment,
+      cycleMonths: assetGroup.cycleMonths,
+    },
+  };
 });
 
 export const getAssetGroup = cache(async (id: string) => {

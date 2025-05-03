@@ -1,9 +1,9 @@
-import { getAssetGroups } from "@/data/asset-group";
+import { getAvailableAssetGroups } from "@/data/asset-group";
 import AssetCards from "./AssetCards";
 import { div } from "motion/react-client";
 
 const Body = async () => {
-  const assetGroups = await getAssetGroups();
+  const assetGroups = await getAvailableAssetGroups();
 
   return (
     <div className="px-[20px] pb-[40px] flex flex-col gap-[20px] overflow-x-hidden">
