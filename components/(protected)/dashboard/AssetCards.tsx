@@ -63,7 +63,7 @@ const AssetCards = ({
           <div className="w-full">
             <Link
               className="flex items-center mx-auto bg-turquoise-500 hover:bg-turqoise-700 text-white rounded-2xl w-[140px] h-[30px]"
-              href={`/dashboard/details?assetId=${id}`}
+              href={`/dashboard/details?assetId=${id}&name=${name}`}
             >
               <p className="text-center w-full text-base">View Group</p>
             </Link>
